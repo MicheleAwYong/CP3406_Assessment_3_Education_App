@@ -22,7 +22,6 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.cp3406assessment3educationapp.ui.theme.CP3406Assessment3EducationAppTheme
 
-// Renamed to prevent conflicting overloads with other classes named "Screen"
 sealed class MindMazeScreen(val route: String) {
     object Landing : MindMazeScreen("landing")
     object Activity : MindMazeScreen("activity")
