@@ -115,3 +115,38 @@ fun LandingScreen(
             }
         }
 
+        Column(
+            modifier = Modifier.fillMaxWidth(),
+            verticalArrangement = Arrangement.spacedBy(12.dp)
+        ) {
+            Button(
+                onClick = onNavigateToActivity,
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Icon(Icons.Default.PlayArrow, contentDescription = null)
+                Spacer(modifier = Modifier.width(8.dp))
+                Text("Continue Training")
+            }
+
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(12.dp)
+            ) {
+                OutlinedButton(
+                    onClick = onNavigateToStats,
+                    modifier = Modifier.weight(1f)
+                ) {
+                    Text("View Stats")
+                }
+                OutlinedButton(
+                    onClick = onNavigateToSettings,
+                    modifier = Modifier.weight(1f)
+                ) {
+                    Icon(Icons.Default.Settings, contentDescription = null)
+                    Spacer(modifier = Modifier.width(4.dp))
+                    Text("Settings")
+                }
+            }
+        }
+    }
+}
