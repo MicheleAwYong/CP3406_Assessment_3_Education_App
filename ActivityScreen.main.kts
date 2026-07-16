@@ -26,3 +26,22 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.delay
+
+@Composable
+fun ActivityScreen(onNavigateBack: () -> Unit) {
+    val sampleQuestion = "What comes next: 2, 4, 8, 16, __?"
+    val sampleOptions = listOf("20", "24", "32", "64")
+    val correctAnswer = "32"
+
+    var selectedOption by remember { mutableStateOf<String?>(null) }
+    var isAnswered by remember { mutableStateOf(false) }
+    var timerSeconds by remember { mutableIntStateOf(30) }
+
+    LaunchedEffect(key1 = timerSeconds, key2 = isAnswered) {
+        if (timerSeconds > 0 && !isAnswered) {
+            delay(1000L)
+            timerSeconds--
+        } else if (timerSeconds == 0) {
+            isAnswered = true
+        }
+    }
