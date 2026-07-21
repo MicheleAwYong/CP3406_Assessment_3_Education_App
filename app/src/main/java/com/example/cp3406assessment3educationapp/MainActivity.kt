@@ -62,7 +62,10 @@ fun MindMazeApp(modifier: Modifier = Modifier) {
             )
         }
         composable(MindMazeScreen.Activity.route) {
-            MenuScreen(title = "Activity Screen (Puzzles)")
+            ActivityScreen(
+                onNavigateBack = { navController.popBackStack() }
+            )
+        }
         }
         composable(MindMazeScreen.Stats.route) {
             MenuScreen(title = "Stats Screen (Analytics)")

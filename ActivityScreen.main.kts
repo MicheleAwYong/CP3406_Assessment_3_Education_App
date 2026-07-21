@@ -45,3 +45,72 @@ fun ActivityScreen(onNavigateBack: () -> Unit) {
             isAnswered = true
         }
     }
+
+    Column(
+        modifier = Modifier.fillMaxSize().padding(24.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.SpaceBetween
+    ) {
+        Column(modifier = Modifier.fillMaxWidth()) {
+            Text(
+                text = if (timerSeconds > 0) "Time Remaining: $timerSeconds s" else "Time's Up!",
+                style = MaterialTheme.typography.titleMedium,
+                color = if (timerSeconds < 10) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.onSurface
+            )
+            Spacer(modifier = Modifier.height(8.dp))
+            LinearProgressIndicator(
+                progress = { timerSeconds / 30f },
+                modifier = Modifier.fillMaxWidth()
+            )
+        }
+
+        Card(modifier = Modifier.fillMaxWidth().weight(1f).padding(vertical = 24.dp)) {
+            Column(
+                modifier = Modifier.fillMaxSize().padding(24.dp),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text(text = "Category: Sequence Completion", style = MaterialTheme.typography.labelLarge)
+                Spacer(modifier = Modifier.height(16.dp))
+                Text(text = sampleQuestion, style = MaterialTheme.typography.headlineMedium)
+            }
+        }
+
+        Column(modifier = Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+            sampleOptions.forEach { option ->
+                val isSelected = selectedOption == option
+                val buttonColor = when {
+                    isAnswered && option == correctAnswer -> Color(0xFF4CAF50)
+                    isAnswered && isSelected && option != correctAnswer -> Color(0xFFF44336)
+                    isSelected -> MaterialTheme.colorScheme.primaryContainer
+                    else -> MaterialTheme.colorScheme.surface
+                }
+
+                OutlinedButton(
+                    onClick = { if (!isAnswered) selectedOption = option },
+                    modifier = Modifier.fillMaxWidth(),
+                    colors = ButtonDefaults.outlinedButtonColors(containerColor = buttonColor),
+                    enabled = !isAnswered
+                ) {
+                    Text(text = option, style = MaterialTheme.typography.bodyLarge)
+                }
+            }
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            if (!isAnswered) {
+                Button(
+                    onClick = { isAnswered = true },
+                    modifier = Modifier.fillMaxWidth(),
+                    enabled = selectedOption != null
+                ) {
+                    Text("Submit Answer")
+                }
+            } else {
+                Button(onClick = onNavigateBack, modifier = Modifier.fillMaxWidth()) {
+                    Text("Return to Hub")
+                }
+            }
+        }
+    }
+}
