@@ -92,7 +92,9 @@ fun MindMazeApp(modifier: Modifier = Modifier) {
             )
         }
         composable(MindMazeScreen.Stats.route) {
-            MenuScreen(title = "Stats Screen (Analytics)")
+            StatsScreen(
+                onNavigateBack = { navController.popBackStack() }
+            )
         }
         composable(MindMazeScreen.Settings.route) {
             MenuScreen(title = "Settings Screen (Ethics-by-Design)")
@@ -323,5 +325,31 @@ fun MenuScreen(title: String) {
         contentAlignment = Alignment.Center
     ) {
         Text(text = title, style = MaterialTheme.typography.titleLarge)
+    }
+}
+@Composable
+fun StatsScreen(onNavigateBack: () -> Unit) {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(24.dp),
+        verticalArrangement = Arrangement.SpaceBetween,
+        horizontalAlignment = Alignment.Start
+    ) {
+
+        Column(modifier = Modifier.padding(top = 16.dp)) {
+            Text(
+                text = "Performance Hub 📊",
+                style = MaterialTheme.typography.headlineLarge,
+                color = MaterialTheme.colorScheme.primary
+            )
+            Text(
+                text = "Track your cognitive growth over time.",
+                style = MaterialTheme.typography.bodyLarge,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+        }
+
+        }
     }
 }
