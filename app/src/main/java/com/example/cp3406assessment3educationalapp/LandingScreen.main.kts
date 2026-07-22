@@ -1,4 +1,4 @@
-package com.example.cp3406assessment3educationapp
+package com.example.cp3406assessment3educationalapp
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

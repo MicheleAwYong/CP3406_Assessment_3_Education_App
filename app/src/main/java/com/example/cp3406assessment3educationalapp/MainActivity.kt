@@ -1,4 +1,4 @@
-package com.example.cp3406assessment3educationapp
+package com.example.cp3406assessment3educationalapp
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -20,7 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.cp3406assessment3educationapp.ui.theme.CP3406Assessment3EducationAppTheme
+import com.example.cp3406assessment3educationalapp.ui.theme.CP3406Assessment3EducationAppTheme
 
 sealed class MindMazeScreen(val route: String) {
     object Landing : MindMazeScreen("landing")
@@ -65,8 +65,7 @@ fun MindMazeApp(modifier: Modifier = Modifier) {
             ActivityScreen(
                 onNavigateBack = { navController.popBackStack() }
             )
-        }
-        }
+        } // Fixed: Removed the duplicate closing brace that was breaking the block here!
         composable(MindMazeScreen.Stats.route) {
             MenuScreen(title = "Stats Screen (Analytics)")
         }
