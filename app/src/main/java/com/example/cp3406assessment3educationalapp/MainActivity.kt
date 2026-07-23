@@ -242,3 +242,32 @@ fun SettingsScreen(onNavigateBack: () -> Unit) {
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
         }
+
+
+        Column(
+            modifier = Modifier.fillMaxWidth(),
+            verticalArrangement = Arrangement.spacedBy(16.dp)
+        ) {
+            Card(modifier = Modifier.fillMaxWidth()) {
+                Column(modifier = Modifier.padding(16.dp)) {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Column(modifier = Modifier.weight(1f)) {
+                            Text(text = "Daily Training Reminders", style = MaterialTheme.typography.titleSmall)
+                            Text(text = "Receive a nudging notification to keep up your daily streak.", style = MaterialTheme.typography.bodySmall)
+                        }
+                        // Simple custom check layout for visual feedback
+                        OutlinedButton(
+                            onClick = { notificationsEnabled = !notificationsEnabled },
+                            colors = ButtonDefaults.outlinedButtonColors(
+                                containerColor = if (notificationsEnabled) MaterialTheme.colorScheme.primaryContainer else Color.Transparent
+                            )
+                        ) {
+                            Text(if (notificationsEnabled) "ON" else "OFF")
+                        }
+                    }
+                }
+            }
