@@ -259,7 +259,6 @@ fun SettingsScreen(onNavigateBack: () -> Unit) {
                             Text(text = "Daily Training Reminders", style = MaterialTheme.typography.titleSmall)
                             Text(text = "Receive a nudging notification to keep up your daily streak.", style = MaterialTheme.typography.bodySmall)
                         }
-                        // Simple custom check layout for visual feedback
                         OutlinedButton(
                             onClick = { notificationsEnabled = !notificationsEnabled },
                             colors = ButtonDefaults.outlinedButtonColors(
@@ -271,3 +270,27 @@ fun SettingsScreen(onNavigateBack: () -> Unit) {
                     }
                 }
             }
+
+            Card(modifier = Modifier.fillMaxWidth()) {
+                Column(modifier = Modifier.padding(16.dp)) {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Column(modifier = Modifier.weight(1f)) {
+                            Text(text = "Privacy: Anonymous Metrics", style = MaterialTheme.typography.titleSmall)
+                            Text(text = "Share completely anonymized task latency to help adjust puzzle difficulty algorithms.", style = MaterialTheme.typography.bodySmall)
+                        }
+                        OutlinedButton(
+                            onClick = { analyticsEnabled = !analyticsEnabled },
+                            colors = ButtonDefaults.outlinedButtonColors(
+                                containerColor = if (analyticsEnabled) MaterialTheme.colorScheme.primaryContainer else Color.Transparent
+                            )
+                        ) {
+                            Text(if (analyticsEnabled) "ON" else "OFF")
+                        }
+                    }
+                }
+            }
+        }
