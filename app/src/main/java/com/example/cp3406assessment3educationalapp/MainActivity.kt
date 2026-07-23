@@ -84,13 +84,15 @@ fun MindMazeApp(modifier: Modifier = Modifier) {
                 onNavigateBack = { navController.popBackStack() }
             )
         }
-        composable(MindMazeScreen.Settings.route) {
-            SettingsScreen(
+        composable(MindMazeScreen.Stats.route) {
+            StatsScreen(
                 onNavigateBack = { navController.popBackStack() }
             )
         }
         composable(MindMazeScreen.Settings.route) {
-            MenuScreen(title = "Settings Screen (Ethics-by-Design)")
+            SettingsScreen(
+                onNavigateBack = { navController.popBackStack() }
+            )
         }
     }
 }
@@ -364,7 +366,6 @@ fun SettingsScreen(onNavigateBack: () -> Unit) {
                             Text(text = "Daily Training Reminders", style = MaterialTheme.typography.titleSmall)
                             Text(text = "Receive a nudging notification to keep up your daily streak.", style = MaterialTheme.typography.bodySmall)
                         }
-                        // Simple custom check layout for visual feedback
                         OutlinedButton(
                             onClick = { notificationsEnabled = !notificationsEnabled },
                             colors = ButtonDefaults.outlinedButtonColors(
@@ -400,7 +401,6 @@ fun SettingsScreen(onNavigateBack: () -> Unit) {
                 }
             }
         }
-
 
         Column(
             modifier = Modifier.fillMaxWidth(),
