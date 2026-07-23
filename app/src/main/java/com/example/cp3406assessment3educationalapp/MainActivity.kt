@@ -179,7 +179,7 @@ fun ActivityScreen(onNavigateBack: () -> Unit) {
                 val isSelected = selectedOption == option
                 val buttonColor = when {
                     isAnswered && option == correctAnswer -> Color(0xFF4CAF50)
-                    isAnswered && isSelected && option != correctAnswer -> Color(0xFFF44336)
+                    isAnswered && isSelected -> Color(0xFFF44336)
                     isSelected -> MaterialTheme.colorScheme.primaryContainer
                     else -> MaterialTheme.colorScheme.surface
                 }
