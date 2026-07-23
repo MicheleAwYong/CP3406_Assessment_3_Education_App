@@ -1,4 +1,4 @@
-package com.example.cp3406assessment3educationalapp
+package com.example.cp3406assessment3educationapp
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
