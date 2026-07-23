@@ -284,7 +284,6 @@ fun StatsScreen(onNavigateBack: () -> Unit) {
                 Text(text = "Weekly Activity (Puzzles Finished)", style = MaterialTheme.typography.titleSmall)
                 Spacer(modifier = Modifier.height(16.dp))
 
-
                 Row(
                     modifier = Modifier.fillMaxWidth().height(100.dp),
                     horizontalArrangement = Arrangement.SpaceAround,
@@ -293,7 +292,6 @@ fun StatsScreen(onNavigateBack: () -> Unit) {
                     val days = listOf("M" to 0.3f, "T" to 0.6f, "W" to 0.9f, "T" to 0.5f, "F" to 0.8f, "S" to 0.2f, "S" to 0.4f)
                     days.forEach { (day, targetFill) ->
                         Column(horizontalAlignment = Alignment.CenterHorizontally) {
-
                             Card(
                                 modifier = Modifier
                                     .width(16.dp)
@@ -309,6 +307,20 @@ fun StatsScreen(onNavigateBack: () -> Unit) {
             }
         }
 
+        Card(modifier = Modifier.fillMaxWidth()) {
+            Column(modifier = Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                Text(text = "Cognitive Focus Strengths", style = MaterialTheme.typography.titleSmall)
+
+                Column {
+                    Text(text = "Logic & Analysis (92%)", style = MaterialTheme.typography.bodySmall)
+                    LinearProgressIndicator(progress = { 0.92f }, modifier = Modifier.fillMaxWidth())
+                }
+                Column {
+                    Text(text = "Attention & Focus (78%)", style = MaterialTheme.typography.bodySmall)
+                    LinearProgressIndicator(progress = { 0.78f }, modifier = Modifier.fillMaxWidth())
+                }
+            }
+        }
 
         Button(
             onClick = onNavigateBack,
