@@ -229,6 +229,38 @@ fun MenuScreen(title: String) {
 }
 
 @Composable
+fun StatsScreen(onNavigateBack: () -> Unit) {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(24.dp),
+        verticalArrangement = Arrangement.SpaceBetween,
+        horizontalAlignment = Alignment.Start
+    ) {
+        Column(modifier = Modifier.padding(top = 16.dp)) {
+            Text(
+                text = "Performance Hub 📊",
+                style = MaterialTheme.typography.headlineLarge,
+                color = MaterialTheme.colorScheme.primary
+            )
+            Text(
+                text = "Track your cognitive growth over time.",
+                style = MaterialTheme.typography.bodyLarge,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+        }
+
+
+        Button(
+            onClick = onNavigateBack,
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text("Return to Hub")
+        }
+    }
+}
+
+@Composable
 fun SettingsScreen(onNavigateBack: () -> Unit) {
     var notificationsEnabled by remember { mutableStateOf(true) }
     var analyticsEnabled by remember { mutableStateOf(false) }
