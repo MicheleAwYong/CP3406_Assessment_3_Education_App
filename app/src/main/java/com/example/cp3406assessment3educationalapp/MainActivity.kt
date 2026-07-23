@@ -276,6 +276,40 @@ fun StatsScreen(onNavigateBack: () -> Unit) {
             }
         }
 
+        Card(
+            modifier = Modifier.fillMaxWidth(),
+            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
+        ) {
+            Column(modifier = Modifier.padding(16.dp)) {
+                Text(text = "Weekly Activity (Puzzles Finished)", style = MaterialTheme.typography.titleSmall)
+                Spacer(modifier = Modifier.height(16.dp))
+
+
+                Row(
+                    modifier = Modifier.fillMaxWidth().height(100.dp),
+                    horizontalArrangement = Arrangement.SpaceAround,
+                    verticalAlignment = Alignment.Bottom
+                ) {
+                    val days = listOf("M" to 0.3f, "T" to 0.6f, "W" to 0.9f, "T" to 0.5f, "F" to 0.8f, "S" to 0.2f, "S" to 0.4f)
+                    days.forEach { (day, targetFill) ->
+                        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+
+                            Card(
+                                modifier = Modifier
+                                    .width(16.dp)
+                                    .weight(1f, fill = false)
+                                    .height((100 * targetFill).dp),
+                                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primary)
+                            ) {}
+                            Spacer(modifier = Modifier.height(4.dp))
+                            Text(text = day, style = MaterialTheme.typography.labelSmall)
+                        }
+                    }
+                }
+            }
+        }
+
+
         Button(
             onClick = onNavigateBack,
             modifier = Modifier.fillMaxWidth()
